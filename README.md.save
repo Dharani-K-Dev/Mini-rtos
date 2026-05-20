@@ -1,0 +1,14 @@
+# Mini Cooperative RTOS Scheduler
+
+A minimal cooperative task scheduler in pure C that demonstrates the core internals of every RTOS — tasks, task control blocks (TCB), ready queue, priority-based selection, and yield-driven context switching.
+
+## What This Demonstrates
+
+- **Task Control Blocks (TCB):** Static array of 8 TCBs with function pointer, priority, state, private stack, and saved context
+- **4 Task States:** READY, RUNNING, BLOCKED, DEAD — with proper state transitions
+- **Priority-Based Scheduling:** Lower number = higher priority. Scheduler always picks the highest-priority READY task
+- **Cooperative Context Switching:** Tasks voluntarily yield or delay. Uses POSIX `ucontext_t` / `swapcontext()` (portable equivalent of FreeRTOS PendSV assembly)
+- **Blocking Delay:** `mini_delay(ticks)` moves task to BLOCKED state, decremented 
+```
+
+## Sample Output
